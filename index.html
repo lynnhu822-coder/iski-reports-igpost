@@ -12,6 +12,7 @@
     --bg: #F7F5F0; --surface: #FFFFFF; --border: #E5E2DA;
     --text: #1A1916; --muted: #6B6860; --accent: #1A3A5C; --accent2: #3D7A4F;
     --accent-light: #E8EFF6; --accent2-light: #E8F2EC;
+    --amber-light: #FEF8EC; --amber: #B87A10; --amber-text: #7A5008;
     --tag-act-bg: #FEF3E8; --tag-act-text: #9A4E10;
     --tag-know-bg: #E8F2EC; --tag-know-text: #2D6640;
     --tag-reel-bg: #EEF0FE; --tag-reel-text: #3040A0;
@@ -28,10 +29,10 @@
   .section { margin-bottom: 56px; }
   .section-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   .section-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); margin-bottom: 20px; }
-  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 8px; }
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 8px; }
   .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
   .metric-card-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-  .metric-card-value { font-size: 28px; font-weight: 300; color: var(--accent); letter-spacing: -0.02em; }
+  .metric-card-value { font-size: 26px; font-weight: 300; color: var(--accent); letter-spacing: -0.02em; }
   .metric-card-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
   .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px; margin-bottom: 12px; }
   .chart-card-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
@@ -42,14 +43,14 @@
   .legend-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
   .insight { border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-top: 16px; font-size: 13.5px; line-height: 1.6; background: var(--accent-light); color: var(--accent); }
   .insight.green { background: var(--accent2-light); border-left-color: var(--accent2); color: #1E4D2E; }
-  .insight.amber { background: #FEF8EC; border-left-color: #B87A10; color: #7A5008; }
+  .insight.amber { background: var(--amber-light); border-left-color: var(--amber); color: var(--amber-text); }
   .insight strong { font-weight: 500; }
   .insight ul { margin: 8px 0 0 16px; }
   .insight ul li { margin-bottom: 4px; }
   .note { font-size: 12px; color: var(--muted); margin-top: 10px; font-style: italic; }
   .post-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
-  .post-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 0 10px 10px 0; border-bottom: 1px solid var(--border); }
-  .post-table td { padding: 12px 10px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .post-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 0 8px 10px 0; border-bottom: 1px solid var(--border); }
+  .post-table td { padding: 12px 8px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
   .post-table tr:last-child td { border-bottom: none; }
   .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 500; white-space: nowrap; display: inline-block; }
   .tag-act { background: var(--tag-act-bg); color: var(--tag-act-text); }
@@ -57,6 +58,8 @@
   .tag-reel { background: var(--tag-reel-bg); color: var(--tag-reel-text); }
   .tag-img { background: #F5F5F5; color: #555; }
   .tag-carousel { background: var(--tag-carousel-bg); color: var(--tag-carousel-text); }
+  .table-note { font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.6; }
+  .table-note strong { font-weight: 500; color: var(--text); }
   .report-footer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 60px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
   @media (max-width: 600px) { .page { padding: 32px 20px 60px; } .report-title { font-size: 28px; } }
 </style>
@@ -64,6 +67,7 @@
 <body>
 <div class="page">
 
+  <!-- Header -->
   <div class="report-header">
     <div class="report-label">iSKI 社群媒體分析</div>
     <h1 class="report-title">Instagram 內容表現報告</h1>
@@ -76,6 +80,7 @@
     </div>
   </div>
 
+  <!-- 概覽 -->
   <div class="section">
     <div class="section-label">概覽</div>
     <div class="section-title">本期關鍵數字</div>
@@ -100,9 +105,15 @@
         <div class="metric-card-value">2,822</div>
         <div class="metric-card-sub">有資料貼文計算</div>
       </div>
+      <div class="metric-card">
+        <div class="metric-card-label">整體平均互動率</div>
+        <div class="metric-card-value">2.38%</div>
+        <div class="metric-card-sub">互動數 ÷ 觸及人數</div>
+      </div>
     </div>
   </div>
 
+  <!-- 趨勢 -->
   <div class="section">
     <div class="section-label">趨勢</div>
     <div class="section-title">每月互動數 × 觸及人數變化</div>
@@ -113,39 +124,61 @@
         <span><span class="legend-sq" style="background:#1A3A5C"></span>平均互動數／篇</span>
         <span><span class="legend-sq" style="background:#3D7A4F"></span>平均觸及人數（÷100）</span>
       </div>
-      <div class="chart-wrap" style="height:260px;">
-        <canvas id="trendChart"></canvas>
-      </div>
+      <div class="chart-wrap" style="height:260px;"><canvas id="trendChart"></canvas></div>
       <p class="note">＊1月平均互動數 169，受單篇高表現貼文帶動（互動數 1,377）；排除後均值為 59，與 2–4月水準一致。</p>
       <div class="insight amber">
-        <strong>1月雪季旺季觸及最高（均4,204人），2月起進入淡季後觸及明顯收縮。</strong>互動數在排除1月單篇高表現後，整體維持 59–68 的穩定區間，顯示核心受眾的參與度並未因淡季而流失——這是一個健康的訊號。
+        <strong>1月雪季旺季觸及最高（均 4,204 人），2月起淡季後觸及明顯收縮。</strong>互動數在排除1月單篇高表現後，整體維持 59–68 的穩定區間，顯示核心受眾的參與度並未因淡季流失——這是一個健康的訊號。
       </div>
     </div>
   </div>
 
+  <!-- 互動率 -->
+  <div class="section">
+    <div class="section-label">內容質量</div>
+    <div class="section-title">互動率（Engagement Rate）分析</div>
+    <div class="chart-card">
+      <div class="chart-card-title">月份 ER 趨勢 × 格式 ER 比較</div>
+      <div class="chart-card-sub">互動率 = 互動數 ÷ 觸及人數，排除觸及數為 0 的貼文</div>
+      <div class="legend">
+        <span><span class="legend-sq" style="background:#1A3A5C"></span>月份平均 ER</span>
+      </div>
+      <div class="chart-wrap" style="height:240px;"><canvas id="erTrendChart"></canvas></div>
+      <div class="legend" style="margin-top:20px;">
+        <span><span class="legend-sq" style="background:#1A3A5C"></span>貼文數量</span>
+        <span><span class="legend-sq" style="background:#C0522A"></span>平均互動率（ER）</span>
+      </div>
+      <div class="chart-wrap" style="height:220px;"><canvas id="erTypeChart"></canvas></div>
+      <div class="insight">
+        <strong>4月互動率達 3.62%，是全期最高，且與觸及人數下滑的趨勢相反。</strong>這說明淡季雖然觸及收縮，但留下來互動的受眾質量更高——對 iSKI 來說，淡季是鞏固核心受眾的關鍵時機，不應只看觸及數字來評估表現。
+      </div>
+      <div class="insight green">
+        <strong>輪播格式的 ER 最高（3.15%），高於 Reel（2.61%）和圖像（1.63%）。</strong>輪播需要用戶主動滑動，觸發更深度的內容互動，Meta 演算法也對這類停留行為給予更高權重。建議在教學類題材上優先考慮輪播格式。
+      </div>
+    </div>
+  </div>
+
+  <!-- 知識 vs 活動 -->
   <div class="section">
     <div class="section-label">內容策略</div>
-    <div class="section-title">知識 vs 活動（販促）互動比較</div>
+    <div class="section-title">知識 vs 活動（販促）表現比較</div>
     <div class="chart-card">
-      <div class="chart-card-title">各指標平均值比較（平均值／篇）</div>
+      <div class="chart-card-title">各指標比率比較（平均值／篇）</div>
       <div class="chart-card-sub">知識類 17 篇 · 活動（販促）類 21 篇 · 全期 1–4 月</div>
       <div class="legend">
         <span><span class="legend-sq" style="background:#1A3A5C"></span>知識</span>
         <span><span class="legend-sq" style="background:#3D7A4F"></span>活動（販促）</span>
       </div>
-      <div class="chart-wrap" style="height:260px;">
-        <canvas id="catChart"></canvas>
-      </div>
+      <div class="chart-wrap" style="height:260px;"><canvas id="catChart"></canvas></div>
       <div class="insight">
-        <strong>知識類貼文的按讚數是活動類的 2.3 倍（67 vs 29），收藏數達 10 倍（43 vs 4）。</strong>收藏數的差距尤其顯著——受眾主動存下教學內容備查，代表這類貼文具備長尾價值，不只是當下的觸及。建議維持教學內容在發文組合中至少 45% 的佔比。
+        <strong>知識類 ER（2.71%）高於活動類（2.09%），按讚數差距達 2.3 倍（67 vs 29），收藏率差距超過 2 倍（0.42% vs 0.19%）。</strong>收藏率高代表受眾主動存下內容備查，具備長尾傳播價值。建議維持知識類貼文在發文組合中至少 45% 的佔比。
       </div>
       <div class="insight green">
-        <strong>分享數知識類也高於活動類（31 vs 13）。</strong>教學內容被轉傳的動機是「有用所以分享」，比促銷的「有優惠所以分享」更持久，也更有機會觸及非粉絲的新受眾——這是自然增粉的重要來源。
+        <strong>活動類分享率略高（0.55% vs 0.46%），顯示促銷內容有明確的轉傳動機。</strong>但收藏率遠低於知識類，說明活動貼文的轉換窗口短——上線後 48 小時內的回應速度至關重要。
       </div>
       <div class="insight amber">
-        <strong>留言數兩類均偏低，但留言是 Meta 演算法權重最高的互動行為。</strong>目前已在貼文加入明確 CTA，建議進一步提升留言量的方式：
+        <strong>留言數兩類均偏低，但留言是 Meta 演算法權重最高的互動行為。</strong>目前 iSKI 已在部分貼文加入明確 CTA（如「留言：越後湯澤，馬上給你優惠」），方向正確。建議延伸：
         <ul>
-          <li>將 CTA 改為問句+二選一形式（「你比較想去越後湯澤還是北海道？留言告訴我們」），引導更多人主動回應</li>
+          <li>將 CTA 改為問句形式（「你比較想去越後湯澤還是北海道？留言告訴我們」），引導更多人主動回應</li>
           <li>發文後 30 分鐘內主動回覆留言，觸發演算法對該篇內容的二次分發</li>
           <li>在 Stories 放問答貼圖，將回答者引導至對應貼文留言，形成跨格式互動</li>
           <li>Reels 片尾直接口說留言指令，比僅在 caption 說明更有效</li>
@@ -154,35 +187,32 @@
     </div>
   </div>
 
+  <!-- 追蹤人數 -->
   <div class="section">
-    <div class="section-label">格式分析</div>
-    <div class="section-title">貼文類型：數量與觸及表現</div>
+    <div class="section-label">帳號成長</div>
+    <div class="section-title">各類內容帶來的新追蹤</div>
     <div class="chart-card">
-      <div class="chart-card-title">各類型貼文數量 vs 平均觸及人數</div>
-      <div class="chart-card-sub">左軸：貼文數 · 右軸：平均觸及人數</div>
-      <div class="legend">
-        <span><span class="legend-sq" style="background:#1A3A5C"></span>貼文數量</span>
-        <span><span class="legend-sq" style="background:#C0522A"></span>平均觸及人數</span>
-      </div>
-      <div class="chart-wrap" style="height:260px;">
-        <canvas id="typeChart"></canvas>
-      </div>
+      <div class="chart-card-title">知識 vs 活動（販促）平均帶來追蹤人數</div>
+      <div class="chart-card-sub">22 篇有追蹤資料（知識 11 篇 · 活動 11 篇）· 其餘 16 篇該期間追蹤數為 0</div>
+      <div class="chart-wrap" style="height:200px;"><canvas id="followChart"></canvas></div>
       <div class="insight">
-        <strong>Reel 是目前發文量最大的格式（21篇），平均觸及也最高（3,510人）。</strong>Meta 演算法對 Reel 的分發優勢明顯，建議持續以 Reel 為主力格式。輪播觸及（2,409）雖低於 Reel，但適合多步驟教學內容，搭配知識類題材使用效果最佳。
+        <strong>知識類貼文平均帶來 17.2 名新追蹤，活動類僅 2.0 名，差距達 8 倍。</strong>教學內容吸引的是真正對滑雪有興趣的潛在受眾，帳號長期健康成長的關鍵在於持續累積這類高質量追蹤者，而非透過促銷短期衝量。
       </div>
     </div>
   </div>
 
+  <!-- 貼文排行 -->
   <div class="section">
     <div class="section-label">貼文排行</div>
-    <div class="section-title">互動數前 5 名</div>
+    <div class="section-title">互動數 × 互動率前 5 名</div>
     <div class="chart-card">
       <table class="post-table">
         <thead>
           <tr>
             <th style="width:22px;">#</th>
             <th>貼文標題</th>
-            <th style="text-align:right;width:55px;">互動</th>
+            <th style="text-align:right;width:55px;">互動數</th>
+            <th style="text-align:right;width:50px;">ER</th>
             <th style="text-align:right;width:55px;">觸及</th>
             <th style="text-align:right;width:45px;">讚</th>
             <th style="text-align:right;width:45px;">分享</th>
@@ -191,8 +221,12 @@
         </thead>
         <tbody id="top-posts-body"></tbody>
       </table>
+      <div class="table-note">
+        <strong>互動數</strong>：反映內容的絕對影響力與觸及範圍的綜合結果。<br>
+        <strong>互動率（ER）</strong>：互動數 ÷ 觸及人數，排除觸及規模差異，衡量內容本身對受眾的吸引力。兩者並列觀察，可區分「高觸及但低質量」與「低觸及但高黏著」的內容。
+      </div>
       <div class="insight amber">
-        <strong>第 1 名的單板滑行技巧 Reel 互動數達 1,377，是第 2 名的 7 倍。</strong>這篇搭配音樂節奏呈現動作教學，並加入腳掌點壓示意圖與口訣說明，將技術動作轉化為容易記憶的視覺與語音雙重線索。此製作方向：節奏感、示意圖、口訣三元素並用為目前表現最佳的形式。
+        <strong>第 1 名節奏滑行 Reel 為本期純自然觸及最高（21,481 人），未經廣告投放。</strong>搭配音樂節奏、腳掌點壓示意圖與口訣說明，將技術動作轉化為容易記憶的視覺與語音雙重線索。建議影音夥伴延續此製作方向：節奏感、示意圖、口訣三元素並用。
       </div>
     </div>
   </div>
@@ -205,12 +239,13 @@
 </div>
 
 <script>
+// Top 5 data（按互動數排序）
 const topPosts = [
-  { title:'跟著節奏學起來｜單板滑行技巧', date:'2026-01-27', type:'Reel', cat:'知識', reach:2938, likes:387, comments:3, shares:363, saves:624, eng:1377 },
-  { title:'2026/27 日本雪季雪上教練招募中', date:'2026-04-13', type:'輪播', cat:'活動（販促）', reach:3041, likes:101, comments:2, shares:59, saves:30, eng:192 },
-  { title:'單板滑雪安全守則｜新手一定要記住', date:'2026-01-22', type:'Reel', cat:'知識', reach:4589, likes:108, comments:1, shares:45, saves:18, eng:172 },
-  { title:'五秒糾察隊｜解決你的滑行問題 EP1', date:'2026-03-11', type:'Reel', cat:'知識', reach:2811, likes:67, comments:0, shares:30, saves:8, eng:105 },
-  { title:'NHK World Japan 採訪現場直擊', date:'2026-01-13', type:'輪播', cat:'活動（販促）', reach:5426, likes:97, comments:1, shares:3, saves:2, eng:103 },
+  { title:'跟著節奏學起來｜單板滑行技巧', date:'2026-01-27', type:'Reel', cat:'知識', reach:21481, likes:387, comments:3, shares:363, saves:624, eng:1377, er:6.41 },
+  { title:'2026/27 日本雪季雪上教練招募中', date:'2026-04-13', type:'輪播', cat:'活動（販促）', reach:3041, likes:101, comments:2, shares:59, saves:30, eng:192, er:6.31 },
+  { title:'單板滑雪安全守則｜新手一定要記住', date:'2026-01-22', type:'Reel', cat:'知識', reach:4589, likes:108, comments:1, shares:45, saves:18, eng:172, er:3.74 },
+  { title:'五秒糾察隊｜解決你的滑行問題 EP1', date:'2026-03-11', type:'Reel', cat:'知識', reach:2811, likes:67, comments:0, shares:30, saves:8, eng:105, er:3.74 },
+  { title:'NHK World Japan 採訪現場直擊', date:'2026-01-13', type:'輪播', cat:'活動（販促）', reach:5426, likes:97, comments:1, shares:3, saves:2, eng:103, er:1.90 },
 ];
 
 const tbody = document.getElementById('top-posts-body');
@@ -228,39 +263,24 @@ topPosts.forEach((p, i) => {
           <span style="font-size:11px;color:#999;">${p.date}</span>
         </div>
       </td>
-      <td style="text-align:right;font-weight:500;">${p.eng}</td>
+      <td style="text-align:right;font-weight:500;">${p.eng.toLocaleString()}</td>
+      <td style="text-align:right;color:var(--accent);font-weight:500;">${p.er}%</td>
       <td style="text-align:right;color:var(--muted);">${p.reach.toLocaleString()}</td>
-      <td style="text-align:right;font-weight:500;">${p.likes}</td>
-      <td style="text-align:right;font-weight:500;">${p.shares}</td>
-      <td style="text-align:right;font-weight:500;">${p.saves}</td>
+      <td style="text-align:right;">${p.likes}</td>
+      <td style="text-align:right;">${p.shares}</td>
+      <td style="text-align:right;">${p.saves}</td>
     </tr>
   `;
 });
 
+// 趨勢圖
 new Chart(document.getElementById('trendChart'), {
   type: 'line',
   data: {
     labels: ['1月', '2月', '3月', '4月'],
     datasets: [
-      {
-        label: '平均互動數／篇',
-        data: [169, 39, 62, 68],
-        borderColor: '#1A3A5C',
-        backgroundColor: 'rgba(26,58,92,0.06)',
-        tension: 0.3, fill: true, pointRadius: 6,
-        pointBackgroundColor: '#1A3A5C',
-        yAxisID: 'y'
-      },
-      {
-        label: '平均觸及÷100',
-        data: [42, 21, 23, 19],
-        borderColor: '#3D7A4F',
-        borderDash: [5, 4],
-        backgroundColor: 'rgba(61,122,79,0.04)',
-        tension: 0.3, fill: false, pointRadius: 6,
-        pointBackgroundColor: '#3D7A4F',
-        yAxisID: 'y2'
-      }
+      { label: '平均互動數／篇', data: [169, 39, 63, 68], borderColor: '#1A3A5C', backgroundColor: 'rgba(26,58,92,0.06)', tension: 0.3, fill: true, pointRadius: 6, pointBackgroundColor: '#1A3A5C', yAxisID: 'y' },
+      { label: '平均觸及÷100', data: [42, 21, 23, 19], borderColor: '#3D7A4F', borderDash: [5,4], tension: 0.3, fill: false, pointRadius: 6, pointBackgroundColor: '#3D7A4F', yAxisID: 'y2' }
     ]
   },
   options: {
@@ -274,29 +294,36 @@ new Chart(document.getElementById('trendChart'), {
   }
 });
 
-new Chart(document.getElementById('catChart'), {
-  type: 'bar',
+// ER 月份趨勢
+new Chart(document.getElementById('erTrendChart'), {
+  type: 'line',
   data: {
-    labels: ['按讚數', '留言數', '分享數', '收藏數'],
-    datasets: [
-      { label: '知識', data: [67, 0, 31, 43], backgroundColor: '#1A3A5C', borderRadius: 4 },
-      { label: '活動（販促）', data: [29, 1, 13, 4], backgroundColor: '#3D7A4F', borderRadius: 4 },
-    ]
+    labels: ['1月', '2月', '3月', '4月'],
+    datasets: [{
+      label: '平均互動率',
+      data: [2.42, 1.74, 2.68, 3.62],
+      borderColor: '#1A3A5C', backgroundColor: 'rgba(26,58,92,0.06)',
+      tension: 0.3, fill: true, pointRadius: 6, pointBackgroundColor: '#1A3A5C'
+    }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}：${ctx.parsed.y}` } } },
-    scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } } }
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ER：${ctx.parsed.y}%` } } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { beginAtZero: false, suggestedMin: 1, suggestedMax: 4.5, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: v => v + '%' } }
+    }
   }
 });
 
-new Chart(document.getElementById('typeChart'), {
+// ER 格式比較
+new Chart(document.getElementById('erTypeChart'), {
   type: 'bar',
   data: {
     labels: ['Reel', '圖像', '輪播'],
     datasets: [
       { label: '貼文數量', data: [21, 11, 6], backgroundColor: '#1A3A5C', borderRadius: 4, yAxisID: 'y' },
-      { label: '平均觸及人數', data: [3510, 1760, 2409], backgroundColor: '#C0522A', borderRadius: 4, yAxisID: 'y2' },
+      { label: '平均互動率', data: [2.61, 1.63, 3.15], backgroundColor: '#C0522A', borderRadius: 4, yAxisID: 'y2' }
     ]
   },
   options: {
@@ -304,8 +331,50 @@ new Chart(document.getElementById('typeChart'), {
     plugins: { legend: { display: false } },
     scales: {
       x: { grid: { display: false } },
-      y: { type: 'linear', position: 'left', title: { display: true, text: '貼文數', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' }, beginAtZero: true },
-      y2: { type: 'linear', position: 'right', title: { display: true, text: '平均觸及人數', font: { size: 11 } }, grid: { drawOnChartArea: false }, beginAtZero: true }
+      y: { position: 'left', beginAtZero: true, title: { display: true, text: '貼文數', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+      y2: { position: 'right', beginAtZero: true, title: { display: true, text: 'ER（%）', font: { size: 11 } }, grid: { drawOnChartArea: false }, ticks: { callback: v => v + '%' } }
+    }
+  }
+});
+
+// 知識 vs 活動比率
+new Chart(document.getElementById('catChart'), {
+  type: 'bar',
+  data: {
+    labels: ['互動率 ER', '分享率', '收藏率'],
+    datasets: [
+      { label: '知識', data: [2.71, 0.46, 0.42], backgroundColor: '#1A3A5C', borderRadius: 4 },
+      { label: '活動（販促）', data: [2.09, 0.55, 0.19], backgroundColor: '#3D7A4F', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}：${ctx.parsed.y}%` } } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { callback: v => v + '%' } }
+    }
+  }
+});
+
+// 追蹤人數
+new Chart(document.getElementById('followChart'), {
+  type: 'bar',
+  data: {
+    labels: ['知識', '活動（販促）'],
+    datasets: [{
+      label: '平均帶來追蹤人數',
+      data: [17.2, 2.0],
+      backgroundColor: ['#1A3A5C', '#3D7A4F'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, title: { display: true, text: '平均追蹤人數／篇', font: { size: 11 } } }
     }
   }
 });
