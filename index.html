@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iSKI Instagram 內容分析報告 v2</title>
+<title>iSKI Instagram 內容分析報告</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -44,10 +44,12 @@
   .insight.green { background: var(--accent2-light); border-left-color: var(--accent2); color: #1E4D2E; }
   .insight.amber { background: #FEF8EC; border-left-color: #B87A10; color: #7A5008; }
   .insight strong { font-weight: 500; }
+  .insight ul { margin: 8px 0 0 16px; }
+  .insight ul li { margin-bottom: 4px; }
   .note { font-size: 12px; color: var(--muted); margin-top: 10px; font-style: italic; }
   .post-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
-  .post-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 0 12px 10px 0; border-bottom: 1px solid var(--border); }
-  .post-table td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .post-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 0 10px 10px 0; border-bottom: 1px solid var(--border); }
+  .post-table td { padding: 12px 10px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
   .post-table tr:last-child td { border-bottom: none; }
   .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 500; white-space: nowrap; display: inline-block; }
   .tag-act { background: var(--tag-act-bg); color: var(--tag-act-text); }
@@ -91,7 +93,7 @@
       <div class="metric-card">
         <div class="metric-card-label">平均互動數／篇</div>
         <div class="metric-card-value">90</div>
-        <div class="metric-card-sub">含1月異常高表現篇</div>
+        <div class="metric-card-sub">含1月單篇高表現數據</div>
       </div>
       <div class="metric-card">
         <div class="metric-card-label">平均觸及人數／篇</div>
@@ -106,17 +108,17 @@
     <div class="section-title">每月互動數 × 觸及人數變化</div>
     <div class="chart-card">
       <div class="chart-card-title">月均互動數 vs 月均觸及人數（1月–4月）</div>
-      <div class="chart-card-sub">藍色實線 = 平均互動數（左軸）· 綠色虛線 = 平均觸及人數 ÷ 100（右軸）</div>
+      <div class="chart-card-sub">藍色實線 = 平均互動數／篇（左軸）· 綠色虛線 = 平均觸及人數 ÷ 100（右軸）</div>
       <div class="legend">
         <span><span class="legend-sq" style="background:#1A3A5C"></span>平均互動數／篇</span>
         <span><span class="legend-sq" style="background:#3D7A4F"></span>平均觸及人數（÷100）</span>
       </div>
       <div class="chart-wrap" style="height:260px;">
-        <canvas id="trendChart" role="img" aria-label="每月平均互動數與觸及人數趨勢折線圖，1月至4月"></canvas>
+        <canvas id="trendChart"></canvas>
       </div>
-      <p class="note">＊1月均互動數 169，受單篇異常高表現貼文（互動數 1,377）影響；排除後均值為 59，與 2–4月水準一致。</p>
+      <p class="note">＊1月平均互動數 169，受單篇高表現貼文帶動（互動數 1,377）；排除後均值為 59，與 2–4月水準一致。</p>
       <div class="insight amber">
-        <strong>1月雪季旺季觸及最高（均4,204人），2月起進入淡季後觸及明顯收縮。</strong>互動數在排除異常值後，1–4月整體維持 59–68 的穩定區間，顯示核心受眾的參與度並未因淡季而流失——這是一個健康的訊號。
+        <strong>1月雪季旺季觸及最高（均4,204人），2月起進入淡季後觸及明顯收縮。</strong>互動數在排除1月單篇高表現後，整體維持 59–68 的穩定區間，顯示核心受眾的參與度並未因淡季而流失——這是一個健康的訊號。
       </div>
     </div>
   </div>
@@ -125,20 +127,29 @@
     <div class="section-label">內容策略</div>
     <div class="section-title">知識 vs 活動（販促）互動比較</div>
     <div class="chart-card">
-      <div class="chart-card-title">各指標平均值比較</div>
+      <div class="chart-card-title">各指標平均值比較（平均值／篇）</div>
       <div class="chart-card-sub">知識類 17 篇 · 活動（販促）類 21 篇 · 全期 1–4 月</div>
       <div class="legend">
         <span><span class="legend-sq" style="background:#1A3A5C"></span>知識</span>
         <span><span class="legend-sq" style="background:#3D7A4F"></span>活動（販促）</span>
       </div>
       <div class="chart-wrap" style="height:260px;">
-        <canvas id="catChart" role="img" aria-label="知識與活動販促貼文在按讚、留言、分享、收藏四項指標的平均值比較"></canvas>
+        <canvas id="catChart"></canvas>
       </div>
       <div class="insight">
-        <strong>知識類貼文的按讚數是活動類的 2.3 倍（66 vs 29），收藏數達 10 倍（43 vs 4）。</strong>收藏數的差距尤其顯著——受眾主動存下教學內容備查，代表這類貼文具備長尾價值，不只是當下的觸及。建議維持教學內容在發文組合中至少 45% 的佔比。
+        <strong>知識類貼文的按讚數是活動類的 2.3 倍（67 vs 29），收藏數達 10 倍（43 vs 4）。</strong>收藏數的差距尤其顯著——受眾主動存下教學內容備查，代表這類貼文具備長尾價值，不只是當下的觸及。建議維持教學內容在發文組合中至少 45% 的佔比。
       </div>
       <div class="insight green">
-        <strong>分享數知識類也高於活動類（31 vs 12）。</strong>教學內容被轉傳的動機是「有用所以分享」，比促銷的「有優惠所以分享」更持久，也更有機會觸及非粉絲的新受眾——這是自然增粉的重要來源。
+        <strong>分享數知識類也高於活動類（31 vs 13）。</strong>教學內容被轉傳的動機是「有用所以分享」，比促銷的「有優惠所以分享」更持久，也更有機會觸及非粉絲的新受眾——這是自然增粉的重要來源。
+      </div>
+      <div class="insight amber">
+        <strong>留言數兩類均偏低，但留言是 Meta 演算法權重最高的互動行為。</strong>目前 iSKI 已在部分貼文加入明確 CTA（如「留言：越後湯澤，馬上給你優惠」），方向正確。建議進一步提升留言量的方式：
+        <ul>
+          <li>將 CTA 改為問句形式（「你比較想去越後湯澤還是北海道？留言告訴我們」），引導更多人主動回應</li>
+          <li>發文後 30 分鐘內主動回覆留言，觸發演算法對該篇內容的二次分發</li>
+          <li>在 Stories 放問答貼圖，將回答者引導至對應貼文留言，形成跨格式互動</li>
+          <li>Reels 片尾直接口說留言指令，比僅在 caption 說明更有效</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -154,10 +165,10 @@
         <span><span class="legend-sq" style="background:#C0522A"></span>平均觸及人數</span>
       </div>
       <div class="chart-wrap" style="height:260px;">
-        <canvas id="typeChart" role="img" aria-label="各貼文類型的數量與平均觸及人數比較"></canvas>
+        <canvas id="typeChart"></canvas>
       </div>
       <div class="insight">
-        <strong>Reel 是目前發文量最大的格式（21篇），平均觸及也最高（3,510人）。</strong>Meta 演算法對 Reel 的分發優勢明顯，建議持續以 Reel 為主力格式。輪播觸及（2,408）雖低於 Reel，但適合多步驟教學內容，搭配知識類題材使用效果最佳。
+        <strong>Reel 是目前發文量最大的格式（21篇），平均觸及也最高（3,510人）。</strong>Meta 演算法對 Reel 的分發優勢明顯，建議持續以 Reel 為主力格式。輪播觸及（2,409）雖低於 Reel，但適合多步驟教學內容，搭配知識類題材使用效果最佳。
       </div>
     </div>
   </div>
@@ -169,18 +180,19 @@
       <table class="post-table">
         <thead>
           <tr>
-            <th style="width:24px;">#</th>
+            <th style="width:22px;">#</th>
             <th>貼文標題</th>
-            <th style="text-align:right;width:60px;">互動</th>
-            <th style="text-align:right;width:50px;">讚</th>
-            <th style="text-align:right;width:50px;">分享</th>
-            <th style="text-align:right;width:50px;">收藏</th>
+            <th style="text-align:right;width:55px;">互動</th>
+            <th style="text-align:right;width:55px;">觸及</th>
+            <th style="text-align:right;width:45px;">讚</th>
+            <th style="text-align:right;width:45px;">分享</th>
+            <th style="text-align:right;width:45px;">收藏</th>
           </tr>
         </thead>
         <tbody id="top-posts-body"></tbody>
       </table>
       <div class="insight amber">
-        <strong>第 1 名的節奏滑行 Reel 互動數達 1,377，是第 2 名的 7 倍。</strong>這篇的成功因素值得深入研究——短片結合音樂節奏、教學動作視覺化，降低了觀看門檻。建議影音夥伴複製這個製作方向：節奏感強、動作清晰、不需旁白也能理解。
+        <strong>第 1 名的單板滑行技巧 Reel 互動數達 1,377，是第 2 名的 7 倍。</strong>這篇搭配音樂節奏呈現動作教學，並加入腳掌點壓示意圖與口訣說明，將技術動作轉化為容易記憶的視覺與語音雙重線索。建議影音夥伴延續此製作方向：節奏感、示意圖、口訣三元素並用。
       </div>
     </div>
   </div>
@@ -194,11 +206,11 @@
 
 <script>
 const topPosts = [
-  { title:'跟著節奏學起來｜單板滑行技巧', date:'2026-01-27', type:'Reel', cat:'知識', likes:387, comments:3, shares:363, saves:624, eng:1377 },
-  { title:'2026/27 日本雪季雪上教練招募中', date:'2026-04-13', type:'輪播', cat:'活動（販促）', likes:101, comments:2, shares:59, saves:30, eng:192 },
-  { title:'單板滑雪安全守則｜新手一定要記住', date:'2026-01-22', type:'Reel', cat:'知識', likes:108, comments:1, shares:45, saves:18, eng:172 },
-  { title:'五秒糾察隊｜解決你的滑行問題 EP1', date:'2026-03-11', type:'Reel', cat:'知識', likes:67, comments:0, shares:30, saves:8, eng:105 },
-  { title:'NHK World Japan 採訪現場直擊', date:'2026-01-13', type:'輪播', cat:'活動（販促）', likes:97, comments:1, shares:3, saves:2, eng:103 },
+  { title:'跟著節奏學起來｜單板滑行技巧', date:'2026-01-27', type:'Reel', cat:'知識', reach:2938, likes:387, comments:3, shares:363, saves:624, eng:1377 },
+  { title:'2026/27 日本雪季雪上教練招募中', date:'2026-04-13', type:'輪播', cat:'活動（販促）', reach:3041, likes:101, comments:2, shares:59, saves:30, eng:192 },
+  { title:'單板滑雪安全守則｜新手一定要記住', date:'2026-01-22', type:'Reel', cat:'知識', reach:4589, likes:108, comments:1, shares:45, saves:18, eng:172 },
+  { title:'五秒糾察隊｜解決你的滑行問題 EP1', date:'2026-03-11', type:'Reel', cat:'知識', reach:2811, likes:67, comments:0, shares:30, saves:8, eng:105 },
+  { title:'NHK World Japan 採訪現場直擊', date:'2026-01-13', type:'輪播', cat:'活動（販促）', reach:5426, likes:97, comments:1, shares:3, saves:2, eng:103 },
 ];
 
 const tbody = document.getElementById('top-posts-body');
@@ -217,6 +229,7 @@ topPosts.forEach((p, i) => {
         </div>
       </td>
       <td style="text-align:right;font-weight:500;">${p.eng}</td>
+      <td style="text-align:right;color:var(--muted);">${p.reach.toLocaleString()}</td>
       <td style="text-align:right;font-weight:500;">${p.likes}</td>
       <td style="text-align:right;font-weight:500;">${p.shares}</td>
       <td style="text-align:right;font-weight:500;">${p.saves}</td>
@@ -230,7 +243,7 @@ new Chart(document.getElementById('trendChart'), {
     labels: ['1月', '2月', '3月', '4月'],
     datasets: [
       {
-        label: '平均互動數',
+        label: '平均互動數／篇',
         data: [169, 39, 62, 68],
         borderColor: '#1A3A5C',
         backgroundColor: 'rgba(26,58,92,0.06)',
@@ -239,7 +252,7 @@ new Chart(document.getElementById('trendChart'), {
         yAxisID: 'y'
       },
       {
-        label: '平均觸及人數÷100',
+        label: '平均觸及÷100',
         data: [42, 21, 23, 19],
         borderColor: '#3D7A4F',
         borderDash: [5, 4],
@@ -266,7 +279,7 @@ new Chart(document.getElementById('catChart'), {
   data: {
     labels: ['按讚數', '留言數', '分享數', '收藏數'],
     datasets: [
-      { label: '知識', data: [66, 0, 31, 43], backgroundColor: '#1A3A5C', borderRadius: 4 },
+      { label: '知識', data: [67, 0, 31, 43], backgroundColor: '#1A3A5C', borderRadius: 4 },
       { label: '活動（販促）', data: [29, 1, 13, 4], backgroundColor: '#3D7A4F', borderRadius: 4 },
     ]
   },
@@ -283,7 +296,7 @@ new Chart(document.getElementById('typeChart'), {
     labels: ['Reel', '圖像', '輪播'],
     datasets: [
       { label: '貼文數量', data: [21, 11, 6], backgroundColor: '#1A3A5C', borderRadius: 4, yAxisID: 'y' },
-      { label: '平均觸及人數', data: [3510, 1759, 2408], backgroundColor: '#C0522A', borderRadius: 4, yAxisID: 'y2' },
+      { label: '平均觸及人數', data: [3510, 1760, 2409], backgroundColor: '#C0522A', borderRadius: 4, yAxisID: 'y2' },
     ]
   },
   options: {
